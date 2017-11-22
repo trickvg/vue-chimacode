@@ -1,7 +1,7 @@
 var users = [
-    { id: 1, name: 'Cuia IFRS', username: 'Cuia do programador', email: 'chimaifrs@poa.ifrs.edu.br' },
+    { id: 1, name: 'Programador', username: 'progifrs', email: 'prog@poa.ifrs.edu.br' },
     { id: 2, name: 'Patrick Garcia', username: 'patrick.garcia', email: 'patrick.garcia@poa.ifrs.edu.br' },
-    { id: 3, name: 'Louise Pedroso', username: 'louisep', email: 'louisep@hotmail.com' },
+    { id: 3, name: 'Bugginho ', username: 'bugs', email: 'buginho@hotmail.com' },
     { id: 4, name: 'Guri da fronteira', username: 'guridf', email: 'guridf@churrasco.br' }
 
 ];
@@ -74,16 +74,16 @@ var UserDelete = Vue.extend({
 var AddUser = Vue.extend({
     template: '#add-user',
     data: function() {
-        return { user: { name: '', description: '', price: '' } }
+        return { user: { name: '', username: '', email: '' } }
     },
     methods: {
-        createProduct: function() {
-            var product = this.product;
+        createUser: function() {
+            var user = this.user;
             users.push({
                 id: Math.random().toString().split('.')[1],
-                name: product.name,
-                description: product.description,
-                price: product.price
+                name: user.name,
+                username: user.username,
+                email: user.email
             });
             router.push('/');
         }
@@ -93,10 +93,10 @@ var AddUser = Vue.extend({
 var router = new VueRouter({
     routes: [
         { path: '/', component: List },
-        { path: '/product/:product_id', component: Product, name: 'product' },
-        { path: '/add-product', component: AddUser },
-        { path: '/product/:product_id/edit', component: ProductEdit, name: 'product-edit' },
-        { path: '/product/:product_id/delete', component: ProductDelete, name: 'product-delete' }
+        { path: '/user/:user_id', component: User, name: 'user' },
+        { path: '/add-user', component: AddUser },
+        { path: '/user/:user_id/edit', component: UserEdit, name: 'user-edit' },
+        { path: '/user/:user_id/delete', component: UserDelete, name: 'user-delete' }
     ]
 });
 app = new Vue({
